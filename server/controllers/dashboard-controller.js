@@ -1,7 +1,7 @@
 'use strict';
 
 var User = require('../models/user'),
-var App  = require('../models/apps');
+App  = require('../models/apps'),
 
 plans = User.getPlans();
 
