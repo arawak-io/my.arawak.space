@@ -53,7 +53,7 @@ exports.getProfile = function(req, res, next){
   res.render(req.render, {user: req.user, form: form, error: error, plans: plans});
 };
 
-exports.create = function(req, res){
+exports.createApp = function(req, res){
   new App({
 	name : 'app/'+req.body.name+':latest',
         user : req.body.user

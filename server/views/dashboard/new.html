@@ -1,0 +1,53 @@
+{% extends '../layouts/dashboard.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+
+<div class="container pt">
+      <div class="row mt">
+        <div class="col-lg-6 col-lg-offset-2">
+          <div class="text-centered">
+              <h3>Register App</h3>
+              <hr>
+                <form action="/createapp" method="post">
+                  <div class="form-group">
+                    <label>App Name</label>
+                      <input id="app" type="text" class="form-control" name="name" data-container="body" data-toggle="popover" data-placename="right" data-content="After registering your app, commit your repository, add the server's remote with : git remote add dokku@hostname:appname and then git push your work on that remote."/><br>
+                  </div>
+                  <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" class="form-control" name="user" value="{{user.email}}"/><br>
+                  </div>
+                  <button type="submit" class="btn btn-info">Register</button>
+                </form>
+                <br>
+                <h3>Create DB</h3>
+                <hr>
+                <form action="/createdb" method="post">
+                  <div class="form-group">
+                    <label>DB Name</label>
+                    <input id="dbname" class="form-control" type="text" name="name" data-container="body" data-toggle="popover" data-placename="right" data-content="Database name and app name must be the same !"/><br>
+                  </div>
+                  <div class="form-group">
+                    <label>Type</label>
+                    <select id="dbtype" class="form-control" name="type">
+                      <option value="postgresql">PGSQL</option>
+                      <option value="mysql">MySQL</option>
+                      <option value="redis">Redis</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="user" value="{{user.email}}"/><br>
+                  </div>
+                  <div class="form-group">
+                    <input id="createdb" class="btn btn-info" type="submit" value="Create DB" onclick="dbCreate()"><br>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
