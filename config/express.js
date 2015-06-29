@@ -46,10 +46,6 @@ mongoose.connection.on('error', function() {
   console.error('MongoDB Connection Error. Make sure MongoDB is running.');
 });
 
-var corsOptions = {
-  origin: '*'
-};
-
 // express setup
 var app = express();
 
