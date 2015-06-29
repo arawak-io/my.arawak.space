@@ -20,32 +20,6 @@ a {
   border-color: #8e44ad;
 }*/
 
-.btn-primary {
-  background-color: #9b59b6;
-  border-color: #9b59b6;
-}
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active {
-  background-color: #8f4bab;
-  border-color: #804399;
-}
-.btn-primary.disabled:hover,
-.btn-primary.disabled:focus,
-.btn-primary.disabled:active,
-.btn-primary.disabled.active,
-.btn-primary[disabled]:hover,
-.btn-primary[disabled]:focus,
-.btn-primary[disabled]:active,
-.btn-primary[disabled].active,
-fieldset[disabled] .btn-primary:hover,
-fieldset[disabled] .btn-primary:focus,
-fieldset[disabled] .btn-primary:active,
-fieldset[disabled] .btn-primary.active {
-  background-color: #9b59b6;
-  border-color: #9b59b6;
-}
 
 .header-profile-image {
 	opacity: 0.8;
