@@ -1,0 +1,129 @@
+{% extends '../layouts/dashboard.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+  <div class="container-fluid container-max">
+    {% include "../partials/flash.html" %}
+
+    <form action="/new">
+          <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Create new app/db</button>
+    </form>
+<br>
+
+
+<div class="panel panel-default">
+            <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>State</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                        <tr>
+                            <td>
+                              <a href="/containers/containers[i].Id" id="containers[i].Id">IMAGE</a>
+                            </td>
+                            <td>
+                              containers[i].Status
+                            </td>
+                            <td>
+                              <form action="/destroy/app._id">
+                                <input type="submit" class="btn btn-danger" value="Delete" name="app.name.substring(app.name.indexOf('/')+1).replace(':latest',''" id="containers[i].Id" onclick="deleteContainer(this)"></input>
+                              </form>
+                              </td>
+
+                          </tr>
+                        </tbody>
+
+
+
+                </table>
+
+              </div>
+
+              <div class="text-center">
+                              <h3>Link DB-App</h3>
+                            </div>
+                            <hr>
+                            <form>
+                              <div class="form-group">
+                                <label>DB Name</label>
+                                <input type="text" id="linkdb" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label>App Name</label>
+                                <input type="text" id="linkapp" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <button type="submit" class="btn btn-info" onclick="dbLink()"><span class="glyphicon glyphicon-link"></span> Link DB-App</button>
+                              </div>
+                        </form>
+
+
+
+    {% if user.stripe.plan == 'free' %}
+    <div class="panel panel-default">
+      <div class="panel-heading">Free Plan</div>
+      <div class="panel-body">
+        <p>Thanks for subscribing to the free plan! Enjoy this free content!</p>
+      </div>
+    </div>
+    {% else %}
+    <div class="panel panel-default">
+      <div class="panel-heading">Free Plan (<a href="/billing">Change to this plan</a>)</div>
+    </div>
+    {% endif %}
+
+    {% if user.stripe.plan == 'silver' %}
+    <div class="panel panel-default">
+      <div class="panel-heading">Silver Plan</div>
+      <div class="panel-body">
+        <p>Thanks for subscribing to the silver plan!</p>
+      </div>
+    </div>
+    {% else %}
+    <div class="panel panel-default">
+      <div class="panel-heading">Silver Plan (<a href="/billing">Change to this plan</a>)</div>
+    </div>
+    {% endif %}
+
+    {% if user.stripe.plan == 'gold' %}
+    <div class="panel panel-default">
+      <div class="panel-heading">Gold Plan</div>
+      <div class="panel-body">
+        <p>Thanks for subscribing to the gold plan!</p>
+      </div>
+    </div>
+    {% else %}
+    <div class="panel panel-default">
+      <div class="panel-heading">Gold Plan (<a href="/billing">Change to this plan</a>)</div>
+    </div>
+    {% endif %}
+
+    {% if user.stripe.plan == 'platinum' %}
+    <div class="panel panel-default">
+      <div class="panel-heading">Platinum Plan</div>
+      <div class="panel-body">
+        <p>Thanks for subscribing to the platinum plan!</p>
+      </div>
+    </div>
+    {% else %}
+    <div class="panel panel-default">
+      <div class="panel-heading">Platinum Plan (<a href="/billing">Change to this plan</a>)</div>
+    </div>
+    {% endif %}
+
+    <div class="well">
+      <p>Debug Info:</p>
+      <ul>
+        <li>Does this user have a plan? {% if _.has(plans, user.stripe.plan) %}YES{% else %}NOPE{% endif %}</li>
+        <li>Does this user have paid plan? {% if _.contains(['silver','gold','platinum'], user.stripe.plan) %}YES{% else %}NOPE{% endif %}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

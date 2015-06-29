@@ -1,0 +1,60 @@
+{
+  "name": "Arawak",
+  "description": "",
+  "version": "1.0.0",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+  ],
+  "author": {
+    "name": "Lovell Felix",
+    "email": "hello@lovellfelix.com",
+    "url": "http://eddywashere.com"
+  },
+  "license": "MIT",
+  "main": "server.js",
+  "engines": {
+    "node": "0.12.x",
+    "npm": "2.11.x"
+  },
+  "scripts": {
+    "postinstall": "bower install --config.interactive=false",
+    "start": "node server"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.8.4",
+    "compression": "*",
+    "bower": "~1.3.8",
+    "connect-mongo": "*",
+    "cookie-parser": "~1.3.3",
+    "cors": "*",
+    "debug": "~2.0.0",
+    "express": "^4.10.4",
+    "express-flash": "*",
+    "connect-flash": "~0.1.1",
+    "express-session": "*",
+    "express-subdomain": "^1.0.1",
+    "express-validator": "^2.6.0",
+    "lodash": "^2.4.1",
+    "middleware-responder": "^1.0.0",
+    "mongoose": "~3.8.1",
+    "mongoose-timestamp": "^0.3.0",
+    "morgan": "~1.3.0",
+    "nodemailer": "^1.3.0",
+    "nodemailer-mailgunapi-transport": "0.0.3",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "~2.1.3",
+    "stripe": "^3.0.2",
+    "stripe-webhook-middleware": "^0.1.2",
+    "swig": "^1.4.2",
+    "docker.io": "https://github.com/arawak-io/docker.io.git",
+    "method-override": "~1.0.0",
+    "socket.io": "^1.3.5",
+    "ssh-exec": "^1.2.0"
+  }
+}
