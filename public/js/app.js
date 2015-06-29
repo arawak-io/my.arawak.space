@@ -17,6 +17,26 @@ jQuery(function($) {
       cardWrapper.hide();
     }
   }
+  $('#card-num').payment('formatCardNumber');
+
+   var validateDetails = function() {
+     // set variables for the expiry date validation, cvc validation and expiry date 'splitter'
+     var cardNum = $('#card-num');
+     var validateNumber = $.payment.validateCardNumber(cardNum.val());
+     if (validateNumber) {
+       // if the cvc is valid add the identified class
+       cardNum.closest('.form-group').addClass('has-success').removeClass('has-error');
+     } else {
+       // remove again if the cvc becomes invalid
+       cardNum.closest('.form-group').addClass('has-error').removeClass('has-success');
+     }
+
+   }
+   // this runs the above function every time stuff is entered into the card inputs
+   $('.paymentInput').bind('change paste keyup', function() {
+     validateDetails();
+   });
+
 
   cardForm.submit(function(e) {
     e.preventDefault();
