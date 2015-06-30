@@ -12,6 +12,7 @@ secrets = require('../config/secrets');
 var users = require('./controllers/users-controller'),
 main = require('./controllers/main-controller'),
 dashboard = require('./controllers/dashboard-controller'),
+settings = require('./controllers/settings-controller'),
 passwords = require('./controllers/passwords-controller'),
 registrations = require('./controllers/registrations-controller'),
 sessions = require('./controllers/sessions-controller');
@@ -89,6 +90,16 @@ module.exports = function (app, passport) {
     isAuthenticated,
     dashboard.getProfile);
 
+  app.get('/settings/security',
+    setRender('dashboard/security'),
+    setRedirect({auth: '/'}),
+    isAuthenticated,
+    dashboard.getProfile);
+ app.post('/settings/security/addkey',
+    setRedirect({auth: '/settings/security', success: '/settings/security', failure: '/settings/security'}),
+    isAuthenticated,
+    settings.addSSHKey);
+
   // create application
   app.get('/new',
     setRender('dashboard/new'),
@@ -128,7 +139,7 @@ module.exports = function (app, passport) {
     setRedirect({auth: '/', success: '/'}),
     isAuthenticated,
     users.deleteAccount);
-    
+
   app.get('/user/verify_email',
     setRedirect({success: '/', failure: '/'}),
     users.confirmEmail);

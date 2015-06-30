@@ -1,0 +1,24 @@
+{% extends '../layouts/dashboard.html' %}
+
+{% block title %}Arawak.io - Settings {{title}}{% endblock %}
+
+{% block content %}
+  <div class="container-fluid container-max">
+    {% include "../partials/flash.html" %}
+
+<h3><span class="fa fa-lock"></span> SSH-KEY</h3>
+                <br>
+
+
+                <form action="/settings/security/addkey" method="post">
+                  <div class="form-group">
+                      <input id="name" type="text" name="name" class="form-control disable" placeholder="Enter the name of your computer followed by your username. e.g. :  ubuntupierre"/>
+                  </div>
+                  <div class="form-group">
+                  <input id="user" type="hidden" class="form-control" name="user" value="{{user.email}}"/><br>
+                  <textarea id="publickey" type="text" name="publickey" class="form-control" rows="6" placeholder="Enter your ssh key here"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-info">Submit</button>
+                </form>
+
+  {% endblock %}
